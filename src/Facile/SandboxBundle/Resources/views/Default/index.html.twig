@@ -1,0 +1,26 @@
+{%  extends 'OryzoneBoilerplateBundle::html5.html.twig' %}
+
+{% block head_css %}
+{% stylesheets
+    '@FacileSandboxBundle/Resources/public/compass/stylesheets/screen.css' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+{% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="span12"><h1>Pagine</h1></div>
+        </div>
+        <table class="table table-bordered table-striped">
+            {% for page in pages %}
+                <tr>
+                    <th>{{ loop.index }}. {{ page.title }}</th>
+                    <td>{{ page.content }}</td>
+                </tr>
+            {% else %}
+                <tr><td>non ci sono pagine</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
