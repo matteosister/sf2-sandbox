@@ -3,12 +3,16 @@
 namespace Facile\SandboxBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
+
 
 /**
  * Page
  *
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="Facile\SandboxBundle\Entity\PageRepository")
+ * @ExclusionPolicy("all")
  */
 class Page
 {
@@ -18,6 +22,7 @@ class Page
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -25,6 +30,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Expose
      */
     private $title;
 
@@ -34,6 +40,13 @@ class Page
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column
+     */
+    private $testo;
 
     /**
      * @var boolean
@@ -75,6 +88,28 @@ class Page
     {
         return $this->title;
     }
+
+    /**
+     * Testo setter
+     *
+     * @param string $testo the testo variable
+     */
+    public function setTesto($testo)
+    {
+        $this->testo = $testo;
+    }
+
+    /**
+     * Testo getter
+     *
+     * @return string
+     */
+    public function getTesto()
+    {
+        return $this->testo;
+    }
+
+
 
     /**
      * Set content
